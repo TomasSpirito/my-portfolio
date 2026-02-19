@@ -13,6 +13,16 @@ import { RiStackFill } from "react-icons/ri";
 import { MdOutlineTaskAlt } from "react-icons/md";
 import { PiCertificate } from "react-icons/pi"; // Importar el icono de certificado
 
+// --- IMPORTS DE IMÁGENES (AGREGA ESTO) ---
+import fotoPerfil from './assets/cv22.jpg';
+import logoUade from './assets/uade.png';
+import logoWse from './assets/WSE.png';
+import logoCac from './assets/cac.jpg';
+import logoSecundario from './assets/RF.png';
+import logoPrimario from './assets/recibido.jpg';
+import logoVivatia from './assets/vivatia_logo.jpeg';
+import logoNgaus from './assets/NGAUS.jpg';
+
   function App() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('inicio'); 
@@ -123,7 +133,7 @@ import { PiCertificate } from "react-icons/pi"; // Importar el icono de certific
 
             {/* Contenedor para la imagen */}
             <div className="hero-image-wrapper"> {/* Nuevo contenedor para la imagen y el círculo */}
-                    <img src="/src/assets/cv22.jpg" alt="Tu foto de perfil" className="hero-profile-image" /> {/* Nueva clase para la imagen */}
+                    <img src={fotoPerfil} alt="Tu foto de perfil" className="hero-profile-image" />
             </div>
           </div>
         </section>
@@ -324,7 +334,7 @@ import { PiCertificate } from "react-icons/pi"; // Importar el icono de certific
               {/* PROYECTO 2: Portfolio Personal */}
               <div className="project-card">
                 <div className="project-image-container">
-                  <img src="/src/assets/cv22.jpg" alt="Portfolio Personal" className="project-image" />
+                  <img src={fotoPerfil} alt="Portfolio Personal" className="project-image" />
                   <div className="project-overlay">
                     <a href="#" className="project-btn">
                       <FaExternalLinkAlt /> Estás aquí
@@ -367,7 +377,7 @@ import { PiCertificate } from "react-icons/pi"; // Importar el icono de certific
                             {/* Contenedor para la imagen y el título */}
                             <div className="job-header">
                                 {/* Asegúrate de que la ruta de la imagen sea correcta */}
-                                <img src="/src/assets/vivatia_logo.jpeg" alt="Vivatia Logo" className="job-logo" />
+                                <img src={logoVivatia} alt="Vivatia Logo" className="job-logo" />
                                 <p className="job-title">VIVATIA</p>
                             </div>
                             <p className="job-subtitle">Desarrollador Junior</p>
@@ -398,7 +408,7 @@ import { PiCertificate } from "react-icons/pi"; // Importar el icono de certific
                             {/* Contenedor para la imagen y el título */}
                             <div className="job-header">
                                 {/* Usa una imagen de un logo genérico o crea uno para este proyecto si no tienes uno específico */}
-                                <img src="/src/assets/NGAUS.jpg" alt="NGAUS Project Logo" className="job-logo" /> {/* */}
+                                <img src={logoNgaus} alt="NGAUS Project Logo" className="job-logo" />
                                 <p className="job-title">PROYECTO NGAUS</p>
                             </div>
                             <p className="job-subtitle">Freelance Developer Fullstack</p>
@@ -442,7 +452,7 @@ import { PiCertificate } from "react-icons/pi"; // Importar el icono de certific
                                 </div>
                                 <div className="job-header">
                                     {/* Placeholder para la imagen de UADE */}
-                                    <img src="/src/assets/uade.png" alt="UADE Logo" className="job-logo" />
+                                    <img src={logoUade} alt="UADE Logo" className="job-logo" />
                                     <p className="job-title">Licenciatura en Gestión de Tecnología de la Información</p>
                                 </div>
                                 <p className="job-subtitle">Nivel Terciario - UADE</p>
@@ -471,7 +481,7 @@ import { PiCertificate } from "react-icons/pi"; // Importar el icono de certific
                                 </div>
                                 <div className="job-header">
                                     {/* Placeholder para la imagen de Wall Street English */}
-                                    <img src="/src/assets/WSE.png" alt="Wall Street English Logo" className="job-logo" />
+                                    <img src={logoWse} alt="Wall Street English Logo" className="job-logo" />
                                     <p className="job-title">Estudios de Inglés</p>
                                 </div>
                                 <p className="job-subtitle">Nivel B1 – Intermedio</p>
@@ -492,7 +502,7 @@ import { PiCertificate } from "react-icons/pi"; // Importar el icono de certific
                                 </div>
                                 <div className="job-header">
                                     {/* Placeholder para la imagen de Codo a Codo */}
-                                    <img src="/src/assets/cac.jpg" alt="Codo a Codo Logo" className="job-logo" />
+                                    <img src={logoCac} alt="Codo a Codo Logo" className="job-logo" />
                                     <p className="job-title">FULL STACK PYTHON</p>
                                 </div>
                                 <p className="job-subtitle">Curso BA - Codo a Codo 4.0</p>
@@ -521,7 +531,7 @@ import { PiCertificate } from "react-icons/pi"; // Importar el icono de certific
                                 </div>
                                 <div className="job-header">
                                     {/* Placeholder para la imagen del logo secundario */}
-                                    <img src="/src/assets/RF.png" alt="Instituto Ramón L. Falcón Logo" className="job-logo" />
+                                    <img src={logoSecundario} alt="Instituto Ramón L. Falcón Logo" className="job-logo" />
                                     <p className="job-title">Certificado nivel secundario</p>
                                 </div>
                                 <p className="job-subtitle">Bachiller con orientación en Economía y Administración</p>
@@ -542,7 +552,7 @@ import { PiCertificate } from "react-icons/pi"; // Importar el icono de certific
                                 </div>
                                 <div className="job-header">
                                     {/* Placeholder para la imagen del logo primario */}
-                                    <img src="/src/assets/recibido.jpg" alt="Instituto Félix Fernando Bernasconi Logo" className="job-logo" />
+                                    <img src={logoPrimario} alt="Instituto Félix Fernando Bernasconi Logo" className="job-logo" />
                                     <p className="job-title">Certificado de Nivel Primario</p>
                                 </div>
                                 <p className="job-subtitle">Nivel primario</p>
