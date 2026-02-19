@@ -19,7 +19,6 @@ import logoUade from './assets/uade.png';
 import logoWse from './assets/WSE.png';
 import logoCac from './assets/cac.jpg';
 import logoSecundario from './assets/RF.png';
-import logoPrimario from './assets/recibido.jpg';
 import logoVivatia from './assets/vivatia_logo.jpeg';
 import logoNgaus from './assets/NGAUS.jpg';
 
@@ -539,27 +538,6 @@ import logoNgaus from './assets/NGAUS.jpg';
                                     Completé mis estudios de nivel secundario en el Instituto Ramón L. Falcón, donde obtuve el título de Bachiller con orientación en Economía y Administración. Esta etapa fue clave para mi crecimiento académico y personal, ya que me permitió desarrollar habilidades en análisis económico, gestión organizacional y pensamiento crítico. Los conocimientos adquiridos y los logros alcanzados durante este período me brindaron una base sólida para acceder a estudios universitarios y continuar mi formación.
                                 </p>
                                 {/* No hay certificado online para nivel secundario, así que no se agrega el enlace */}
-                            </div>
-                        </div>
-
-                        {/* Educación: Nivel Primario - ÚLTIMO (más antiguo) */}
-                        <div className="timeline-item">
-                            <div className="timeline-dot"></div>
-                            <div className="timeline-content">
-                                <div className="job-meta-item"> {/* Reutilizamos job-meta-item para la fecha */}
-                                    <MdDateRange className="job-meta-icon" />
-                                    <p className="job-date">2009 - 2016</p>
-                                </div>
-                                <div className="job-header">
-                                    {/* Placeholder para la imagen del logo primario */}
-                                    <img src={logoPrimario} alt="Instituto Félix Fernando Bernasconi Logo" className="job-logo" />
-                                    <p className="job-title">Certificado de Nivel Primario</p>
-                                </div>
-                                <p className="job-subtitle">Nivel primario</p>
-                                <p className="education-description">
-                                    Completé mis estudios de nivel primario en el Instituto Félix Fernando Bernasconi, donde adquirí una formación académica integral que sentó las bases de mi desarrollo educativo y personal. Durante esta etapa, incorporé valores fundamentales, así como habilidades esenciales en lectura, escritura, pensamiento lógico y trabajo en equipo, que luego continuarían fortaleciéndose a lo largo de mi trayectoria académica.
-                                </p>
-                                {/* No hay certificado online para nivel primario, así que no se agrega el enlace */}
                             </div>
                         </div>
                     </div>
