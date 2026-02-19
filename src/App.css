@@ -1,0 +1,1549 @@
+/* Variables CSS para colores - ¡Esto es útil para cambiar colores fácilmente! */
+:root {
+    --bg-color: #121212; /* Fondo muy oscuro */
+    --text-color: #e0e0e0; /* Texto claro */
+    --primary-color: #bb86fc; /* Color de acento morado/rosa, similar al de referencia */
+    --secondary-color: #03dac6; /* Un color secundario, tipo teal, para resaltar */
+    --header-footer-bg: #1e1e1e; /* Un poco más claro que el fondo para distinción */
+    --border-color: #333; /* Color para bordes sutiles */
+    --highlight-color: #00bcd4; /* Nuevo color para resaltar el nombre, similar al de la referencia */
+    --paragraph-color: #b0b0b0; /* Color para el párrafo, un gris un poco más suave */
+    --header-height: 80px; /* <-- NUEVA VARIABLE: Define la altura de tu header. Ajusta este valor si tu header es más alto o más bajo */
+
+    /* Nuevas variables para la línea de tiempo */
+    --timeline-line-color: #555; /* Color de la línea vertical */
+    --timeline-dot-color: var(--primary-color); /* Color de los círculos */
+    --timeline-item-bg: var(--header-footer-bg); /* Fondo de cada item de la línea de tiempo */
+    --timeline-item-border: #444; /* Borde de cada item */
+
+    /* Nuevas variables para habilidades */
+    --skill-card-bg: #2a2a2a; /* Fondo para las tarjetas de habilidad */
+    --skill-card-border: #4a4a4a; /* Borde para las tarjetas de habilidad */
+    --skill-item-bg: #3a3a3a; /* Fondo para cada item de habilidad */
+    --skill-item-hover-bg: var(--primary-color); /* Fondo al hacer hover */
+    --skill-item-hover-text: #fff; /* Color de texto al hacer hover */
+}
+
+/* Reset básicos */
+body, h1, h2, h3, p, ul, li, figure {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Incluye padding y border en el tamaño total del elemento */
+}
+
+/* Estilos generales del cuerpo */
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* Fuente moderna */
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    scroll-behavior: smooth; /* Desplazamiento suave al hacer clic en enlaces de ancla */
+    overflow-x: hidden; /* <-- CAMBIO CLAVE: Evita la barra de desplazamiento horizontal */
+}
+
+/* Estilos para la barra de desplazamiento (Scrollbar) - opcional */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #8e44ad; /* Un morado más oscuro al pasar el ratón */
+}
+
+/* Encabezado (Header) y Navegación (Nav) */
+header {
+    background-color: var(--header-footer-bg);
+    padding: 15px 40px;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Sombra sutil para darle profundidad */
+    box-sizing: border-box; /* Ya lo tienes en body, pero asegura que también esté implícito aquí */
+}
+
+/* Contenedor de la barra de navegación (nav) - AHORA ES EL FLEX CONTAINER */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px; /* Limita el ancho del nav */
+    margin: 0 auto; /* Centra el nav */
+    width: 100%; /* Asegura que ocupe el 100% del header */
+    position: relative; /* Importante para el posicionamiento absoluto del menú hamburguesa */
+}
+
+header h1 {
+    font-size: 1.8em;
+    color: var(--primary-color);
+    margin: 0;
+    font-weight: 700;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px; /* Más espacio entre los enlaces */
+    margin: 0; /* Quita el margen por defecto del ul */
+    padding: 0; /* Quita el padding por defecto del ul */
+}
+
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1em;
+    transition: color 0.3s ease, transform 0.2s ease;
+    position: relative; /* Para el efecto de subrayado */
+    padding-bottom: 5px; /* Espacio para el subrayado */
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--highlight-color);
+    left: 0;
+    bottom: 0;
+    transition: width 0.3s ease;
+}
+
+nav a:hover,
+nav a.active {
+    color: var(--highlight-color);
+    transform: translateY(-2px); /* Pequeño efecto de elevación */
+}
+
+nav a:hover::after,
+nav a.active::after { /* Puedes añadir una clase 'active' para la página actual */
+    width: 100%;
+}
+
+/* Icono de hamburguesa */
+.menu-icon {
+    display: none; /* Oculto por defecto en pantallas grandes */
+    font-size: 2.2em; /* Tamaño un poco más grande para que sea visible */
+    cursor: pointer;
+    color: var(--highlight-color);
+    z-index: 1001;
+}
+
+/* Estilos Generales de Secciones */
+section {
+    padding: 80px 40px; /* Más padding para las secciones */
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Modificación: Asegurar que la sección de inicio ocupe el alto completo y centre su contenido */
+#inicio { /* <--- NUEVA REGLA O MODIFICACIÓN DE EXISTENTE */
+    min-height: calc(100vh - var(--header-height)); /* Ocupa la altura de la ventana menos el header */
+    display: flex; /* Asegura que la propia sección sea un contenedor flex */
+    flex-direction: column; /* Para que el .hero-section-content se centre verticalmente */
+    justify-content: center; /* Centra el contenido verticalmente dentro de #inicio */
+    align-items: center; /* Centra el contenido horizontalmente dentro de #inicio */
+    padding: 0 40px; /* Ajusta el padding de la sección para que no agregue espacio indeseado */
+    box-sizing: border-box;
+}
+
+section:last-child {
+    border-bottom: none; /* No hay borde en la última sección */
+}
+
+section h2 {
+    font-size: 2.8em; /* Tamaño para los títulos de sección */
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    font-weight: 600;
+    position: relative;
+}
+
+section h3 {
+    font-size: 1.8em;
+    color: var(--text-color);
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+section ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+section ul li {
+    background-color: var(--header-footer-bg);
+    margin-bottom: 10px;
+    padding: 15px 25px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 600px; /* Ancho máximo para las listas */
+    width: 100%;
+    text-align: left; /* Alineación del texto dentro de los ítems de lista */
+    font-size: 1.1em;
+}
+
+section ul li:hover {
+    transform: translateY(-5px); /* Efecto al pasar el ratón */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+/*----------------Seccion de Contacto Mejorada----------------*/
+
+.contact-intro {
+    font-size: 1.1em;
+    color: var(--paragraph-color);
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Contenedor de las tarjetas */
+.contact-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap; /* Para que bajen en pantallas chicas */
+    margin-top: 20px;
+}
+
+/* Estilo base de la tarjeta */
+.contact-card {
+    background-color: var(--skill-card-bg); /* Reutilizamos el fondo oscuro de las cards */
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    padding: 30px 20px;
+    width: 200px; /* Ancho fijo para uniformidad */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    position: relative;
+    overflow: hidden; /* Para efectos de brillo si quisieras */
+}
+
+/* Icono grande */
+.contact-icon-box {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+/* Título (Email, LinkedIn, etc) */
+.contact-card h3 {
+    font-size: 1.2em;
+    color: var(--text-color);
+    margin: 0 0 10px 0;
+    font-weight: 600;
+}
+
+/* Texto de acción pequeño */
+.contact-action {
+    font-size: 0.9em;
+    color: var(--paragraph-color);
+    font-weight: 500;
+}
+
+/* --- Efectos Hover Específicos --- */
+
+.contact-card:hover {
+    transform: translateY(-10px); /* Sube la tarjeta */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    border-color: var(--primary-color);
+}
+
+/* Hover específico para Email (Color rojizo/naranja o Primary) */
+.contact-card.email:hover .contact-icon-box {
+    color: #ea4335; /* Color Gmail */
+}
+.contact-card.email:hover h3 {
+    color: #ea4335;
+}
+
+/* Hover específico para LinkedIn (Azul) */
+.contact-card.linkedin:hover .contact-icon-box {
+    color: #0077b5; /* Color LinkedIn */
+}
+.contact-card.linkedin:hover h3 {
+    color: #0077b5;
+}
+
+/* Hover específico para GitHub (Blanco/Gris o Secondary) */
+.contact-card.github:hover .contact-icon-box {
+    color: var(--secondary-color); /* Usamos tu color secundario */
+}
+.contact-card.github:hover h3 {
+    color: var(--secondary-color);
+}
+
+/* Ajuste Responsive para las tarjetas */
+@media (max-width: 768px) {
+    .contact-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .contact-card {
+        width: 100%; /* En móvil ocupan todo el ancho disponible */
+        max-width: 300px;
+        flex-direction: row; /* Icono al lado del texto en móvil */
+        justify-content: flex-start;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .contact-icon-box {
+        margin-bottom: 0;
+        font-size: 2em;
+    }
+
+    .contact-card h3 {
+        margin: 0;
+        text-align: left;
+    }
+    
+    /* Ocultamos la acción en móvil si queremos ahorrar espacio, o la dejamos */
+    .contact-action {
+        display: none; 
+    }
+}
+
+/* Footer */
+footer {
+    background-color: var(--header-footer-bg);
+    text-align: center;
+    padding: 25px;
+    font-size: 0.95em;
+    color: var(--text-color);
+    border-top: 1px solid var(--border-color);
+}
+
+
+
+/* Estilos para el contenedor de contenido principal en las secciones */
+.section-content {
+    max-width: 1000px; /* Ancho máximo deseado para el contenido */
+    width: 100%; /* Asegura que ocupe el 100% del espacio disponible hasta el max-width */
+    margin: 0 auto; /* Centra el bloque horizontalmente */
+    padding: 0 20px; /* Padding horizontal para que no se pegue a los bordes en móviles */
+    box-sizing: border-box; /* <-- ASEGURATE DE QUE ESTA PROPIEDAD ESTÉ AQUÍ */
+}
+
+/* Ajustes para elementos que ya tenían un max-width */
+section p {
+    max-width: 100%; /* Permitimos que el párrafo ocupe el ancho del .section-content */
+    /* ...mantener otros estilos de p */
+}
+
+section ul li {
+    max-width: 100%; /* Permitimos que los li ocupen el ancho del .section-content */
+    /* ...mantener otros estilos de li */
+}
+
+/* Para que la navegación también tenga un ancho máximo si es necesario */
+header nav {
+    max-width: 1200px; /* Ajusta según lo ancho que quieras la barra de navegación */
+    width: 100%;
+    margin: 0 auto;
+    display: flex; /* Para que los elementos internos de nav se distribuyan */
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Ajustes específicos para la sección de Inicio (Hero Section) */
+.hero-section-content {
+    display: flex;
+    flex-direction: column; /* Por defecto, en móvil, será columna (texto arriba, imagen abajo) */
+    gap: 50px; /* Espacio entre el texto y la imagen */
+    max-width: 1400px; /* Ancho máximo para el contenido interno */
+    width: 100%; /* Asegura que ocupe todo el ancho disponible hasta el max-width */
+    margin: 0 auto; /* Centra el bloque .hero-section-content */
+    min-height: calc(100vh - var(--header-height)); /* Ocupa la altura de la ventana menos el header */
+    box-sizing: border-box;
+    /* Añadimos para centrar el contenido de la sección Hero en móviles */
+    align-items: center; /* Centra horizontalmente los ítems flex en column mode */
+    justify-content: center; /* Centra verticalmente los ítems flex */
+}
+
+/* Contenedor del texto en la sección de inicio */
+.hero-text-container {
+    flex: 2; /* <-- Mantenemos flex: 2; por defecto para desktop amplio y el nuevo breakpoint intermedio */
+    text-align: center; /* Centra el texto en móvil */
+    min-width: 280px;
+    max-width: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+.hero-greeting {
+    font-size: 1.8em;
+    color: var(--text-color);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.7s ease-out 0s forwards;
+}
+
+.hero-greeting .wave-emoji {
+    font-size: 1.2em;
+    animation: wave 1.5s ease-in-out 0.3s 1 forwards;
+    margin-left: 10px;
+}
+
+/* Estilo para la manito saludando */
+.wave-emoji {
+    display: inline-block;
+    animation: wave 1.5s ease-in-out 0.3s 1 forwards;
+    margin-left: 10px;
+    font-size: 0.9em;
+}
+
+/* Keyframes de la mano, no necesitas cambiar esto a menos que quieras otra animación */
+@keyframes wave {
+    0% { transform: rotate(0deg); }
+    10% { transform: rotate(14deg); }
+    20% { transform: rotate(-8deg); }
+    30% { transform: rotate(14deg); }
+    40% { transform: rotate(-4deg); }
+    50% { transform: rotate(10deg); }
+    60% { transform: rotate(0deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.hero-name {
+    font-size: 2.8em;
+    color: var(--primary-color);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.7s ease-out 1.5s forwards;
+}
+
+.hero-name .highlight-name {
+    color: var(--highlight-color);
+}
+
+
+.hero-title {
+    font-size: 2.8em;
+    color: var(--text-color);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.7s ease-out 1.5s forwards;
+}
+
+/* NUEVO ESTILO: Para el párrafo de introducción */
+.hero-description {
+    max-width: 700px;
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: var(--paragraph-color);
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.7s ease-out 2s forwards;
+}
+
+/* Contenedor de la imagen de perfil (CUADRADA) */
+.hero-image-wrapper {
+    width: 280px;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffe0b2;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.4), 0 0 50px rgba(0, 0, 0, 0.2);
+    transform: rotate(5deg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex-shrink: 0;
+    opacity: 0;
+    animation: fadeInUp 0.7s ease-out 1.5s forwards;
+    margin: 0 auto;
+    aspect-ratio: 1 / 1; 
+}
+
+.hero-image-wrapper:hover {
+    transform: rotate(3deg) scale(1.03);
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.6), 0 0 70px rgba(0, 0, 0, 0.3);
+}
+
+/* La imagen de perfil dentro del contenedor cuadrado */
+.hero-profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/*----------------Seccion Sobre Mi----------------------------------------------------------------------------*/
+
+/* Contenedor general de la sección Sobre Mí */
+#sobre-mi .section-content {
+    max-width: 800px; /* Limita el ancho del contenido para mejor legibilidad */
+    margin: 0 auto; /* Centra el contenido */
+    padding: 20px; /* Añade un poco de padding para que el contenido no toque los bordes */
+    box-sizing: border-box; /* Asegura que el padding se incluya en el ancho */
+}
+
+/* Estilos para el título de la sección "Sobre Mí" */
+#sobre-mi h2 {
+    margin-bottom: 30px; /* Espacio debajo del título de la sección */
+    text-align: center; /* Centra el título */
+    color: var(--primary-color); /* Asegura que tenga el color de texto principal */
+    font-size: 2.5em; /* Un tamaño adecuado para un título de sección */
+    font-weight: 700;
+}
+
+
+/* Estilos para el texto de información personal en "Sobre Mí" */
+.about-personal-info {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5em;
+    color: var(--highlight-color); /* Un color de acento para que se destaque */
+    margin-bottom: 35px; /* Aumentado ligeramente para mayor separación */
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    line-height: 1.4;
+    text-align: center; /* ¡Añadido para centrar esta línea! */
+}
+
+/* NUEVOS ESTILOS para los párrafos de contenido en "Sobre Mí" */
+.about-paragraph {
+    text-align: justify; /* ¡Esto justifica el texto! */
+    line-height: 1.7; /* Ligeramente aumentado para mejor legibilidad del texto justificado */
+    margin-bottom: 1.5em; /* Añade espacio debajo de cada párrafo */
+    font-size: 1.1em; /* Un tamaño de fuente legible para el cuerpo del texto */
+    color: var(--secondary-text-color); /* Un color para el texto principal, quizás un gris suave */
+}
+
+/* Eliminar el margin-bottom del último párrafo para evitar espacio extra */
+.about-paragraph:last-of-type {
+    margin-bottom: 0;
+}
+
+/*----------------Seccion Experiencia laboral y Educación (comparten base de timeline)----------------------------------------------------------------------------*/
+/* Estilos de la línea de tiempo */
+.timeline {
+    position: relative;
+    max-width: 900px; /* Ancho máximo para la línea de tiempo */
+    margin: 60px auto; /* Centrar y darle margen */
+    padding: 0 20px; /* Espacio a los lados */
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: var(--timeline-line-color);
+    top: 0;
+    bottom: 0;
+    left: 20px; /* Ajusta la posición de la línea */
+    border-radius: 2px;
+}
+
+.timeline-item {
+    margin-bottom: 40px;
+    position: relative;
+    padding-left: 60px; /* Espacio para el punto y la línea */
+    text-align: left;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: var(--timeline-dot-color);
+    border-radius: 50%;
+    left: 11px; /* Alinea el centro del punto con la línea */
+    top: 5px; /* Ajusta para centrar verticalmente con el contenido */
+    border: 3px solid var(--bg-color); /* Borde para que destaque del fondo */
+    box-shadow: 0 0 0 4px rgba(var(--primary-color), 0.3); /* Resplandor sutil */
+    z-index: 1;
+}
+
+.timeline-content {
+    background-color: var(--timeline-item-bg);
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid var(--timeline-item-border);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* NUEVOS ESTILOS PARA LA CABECERA DEL EMPLEO */
+.job-header {
+    display: flex; /* Para alinear la imagen y el título horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    margin-bottom: 10px; /* Espacio debajo del encabezado del trabajo */
+}
+
+.job-logo {
+    width: 40px; /* Tamaño del logo */
+    height: 40px;
+    border-radius: 8px; /* Bordes ligeramente redondeados para la imagen */
+    margin-right: 15px; /* Espacio entre el logo y el título */
+    object-fit: cover; /* Asegura que la imagen se ajuste sin recortarse */
+    background-color: var(--card-bg-color, #333); /* Fondo para logos con transparencia */
+    padding: 0; /* Pequeño padding dentro del logo */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.job-title {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0; /* Eliminar margen por defecto del p */
+}
+
+.job-subtitle {
+    font-size: 1.2em;
+    font-weight: 500;
+    color: var(--highlight-color);
+    margin-bottom: 10px;
+}
+
+/* ESTILOS PARA LOS ITEMS DE METADATOS (FECHA, STACK, TAREAS) */
+.job-meta-item {
+    display: flex; /* Para alinear icono y texto horizontalmente */
+    align-items: flex-start; /* Alinea los ítems arriba si el texto es multilinea */
+    margin-bottom: 10px; /* Espacio entre cada meta item */
+    font-size: 1em;
+    color: var(--paragraph-color); /* Color de texto general para estos ítems */
+}
+
+.job-meta-item:last-child {
+    margin-bottom: 0; /* No hay margen inferior para el último meta item */
+}
+
+.job-meta-icon {
+    font-size: 1.2em; /* Tamaño del icono */
+    color: var(--secondary-color); /* Color de acento para los iconos */
+    margin-right: 8px; /* Espacio entre el icono y el texto */
+    flex-shrink: 0; /* Evita que el icono se encoja */
+    margin-top: 2px; /* Pequeño ajuste vertical si es necesario */
+}
+
+/* Ajustes para el texto de la fecha */
+.job-date {
+    margin: 0; /* Eliminar margen por defecto del p */
+    font-size: 1em; /* Un tamaño más consistente con el texto de los items */
+    color: var(--text-color);
+}
+
+/* Estilos para el stack tecnológico */
+.job-tech-stack, .education-description {
+    margin: 0; /* Eliminar margen por defecto del p */
+    font-size: 1em;
+    color: var(--text-color);
+    line-height: 1.5;
+}
+
+.job-description {
+    list-style: none;
+    padding: 0;
+    margin: 0; /* Ya no es necesario margin-top porque está dentro de job-meta-item */
+}
+
+.job-description li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    font-size: 1em;
+    color: var(--text-color);
+    line-height: 1.5;
+    /* Asegúrate de que no haya estilos heredados no deseados de .job-description li */
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.job-description li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color); /* Cambié a highlight-color para más consistencia */
+    font-weight: bold;
+    font-size: 1.2em;
+    line-height: 1.5;
+}
+
+/* Estilo para el enlace del certificado */
+.certificate-link {
+    display: inline-flex; /* Para alinear el icono y el texto */
+    align-items: center;
+    margin-top: 15px; /* Espacio superior para separarlo de la descripción */
+    color: var(--secondary-color); /* Color de acento para el enlace */
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 15px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.certificate-link:hover {
+    background-color: var(--secondary-color);
+    color: var(--bg-color); /* Texto oscuro sobre el color de acento */
+    border-color: var(--secondary-color);
+}
+
+.certificate-link .job-meta-icon { /* Sobrescribe el color del icono dentro del enlace del certificado */
+    color: inherit; /* Hereda el color del texto del enlace */
+    margin-right: 8px; /* Espacio entre icono y texto */
+}
+
+/*-------------------NUEVOS ESTILOS PARA HABILIDADES Y TECNOLOGÍAS-------------------------------------------------------------*/
+.skills-section {
+    padding-top: 60px; /* Ajusta el padding superior si es necesario para separar del párrafo anterior */
+    padding-bottom: 60px;
+    /* text-align: center; Ya está en section */
+}
+
+.skills-title {
+    color: var(--primary-color); /* Color violeta como el título "Sobre Mí" */
+    margin-bottom: 40px; /* Espacio debajo del título principal de habilidades */
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Columnas responsivas */
+    gap: 30px; /* Espacio entre las tarjetas de categoría */
+    width: 100%;
+    max-width: 1200px; /* Ancho máximo para la cuadrícula de habilidades */
+    margin-top: 40px; /* Espacio por encima de la cuadrícula */
+}
+
+.skills-category-card {
+    background-color: var(--skill-card-bg);
+    border: 1px solid var(--skill-card-border);
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skills-category-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+.skills-category-card h3 {
+    color: var(--highlight-color); /* Color para los títulos de categoría */
+    font-size: 1.6em;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-weight: 600;
+    border-bottom: 2px solid var(--secondary-color); /* Línea debajo del título */
+    padding-bottom: 10px;
+    display: inline-block; /* Para que la línea se ajuste al texto */
+}
+
+.skill-list {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan a la siguiente línea */
+    justify-content: center; /* Centra los elementos horizontalmente */
+    gap: 15px; /* Espacio entre cada habilidad */
+}
+
+.skill-item {
+    background-color: var(--skill-item-bg);
+    color: var(--text-color);
+    padding: 12px 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre el icono y el texto */
+    font-size: 1.05em;
+    font-weight: 500;
+    border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.skill-item:hover {
+    background-color: var(--skill-item-hover-bg); /* Color al hacer hover (violeta) */
+    color: var(--skill-item-hover-text); /* Color del texto al hacer hover (blanco) */
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.skill-item:hover .skill-icon {
+    color: var(--skill-item-hover-text); /* Asegura que el icono también cambie de color */
+}
+
+.skill-icon {
+    font-size: 1.5em; /* Tamaño de los iconos */
+    color: var(--secondary-color); /* Color inicial de los iconos (teal) */
+    transition: color 0.3s ease;
+}
+
+/* NUEVO: Estilo para el contenedor de enlace de habilidad */
+.skill-link {
+    text-decoration: none; /* Quita el subrayado por defecto de los enlaces */
+    color: inherit; /* Hereda el color de texto del padre para que no sea el azul por defecto */
+    display: block; /* Hace que el enlace ocupe todo el espacio del skill-item */
+}
+
+.skill-link:hover .skill-item {
+    /* Aquí se reutilizan los estilos de hover del .skill-item, ya que el enlace envuelve el div */
+    background-color: var(--skill-item-hover-bg);
+    color: var(--skill-item-hover-text);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.skill-link:hover .skill-item .skill-icon {
+    color: var(--skill-item-hover-text);
+}
+
+
+/*----------------Seccion Proyectos----------------*/
+
+.projects-section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 40px;
+    width: 100%;
+    max-width: 1000px; /* Limitamos el ancho para que no se estiren demasiado si hay pocos */
+    margin: 40px auto 0 auto;
+}
+
+.project-card {
+    background-color: var(--skill-card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    border-color: var(--primary-color);
+}
+
+/* Contenedor de la imagen/video */
+.project-image-container {
+    position: relative;
+    width: 100%;
+    height: 220px; /* Altura fija para uniformidad */
+    overflow: hidden;
+    background-color: #000; /* Fondo negro por si el video no carga rápido */
+}
+
+/* Estilo para el video (iframe) */
+.project-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+    border: none;
+    pointer-events: none; /* TRUCO: Evita que el usuario pause el video al hacer click, forzando a usar el overlay */
+}
+
+/* Capa oscura con botones */
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8); /* Fondo oscuro semitransparente */
+    display: flex;
+    flex-direction: column; /* Botones uno debajo del otro o agrupados */
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+    pointer-events: auto; /* Reactiva los clicks en los botones */
+}
+
+/* Fila para botones pequeños (Front/Back) */
+.project-links-row {
+    display: flex;
+    gap: 10px;
+}
+
+/* Botones dentro de la tarjeta */
+.project-btn {
+    padding: 8px 16px;
+    background-color: var(--primary-color);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+.project-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+.project-btn.outline {
+    background-color: transparent;
+    border: 2px solid #fff;
+}
+
+.project-btn.outline:hover {
+    background-color: #fff;
+    color: var(--bg-color);
+}
+
+.project-btn.small {
+    font-size: 0.8em;
+    padding: 6px 12px;
+}
+
+/* Información del proyecto */
+.project-info {
+    padding: 25px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.project-info h3 {
+    font-size: 1.4em;
+    color: var(--highlight-color);
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+
+.project-info p {
+    font-size: 0.95em;
+    color: var(--paragraph-color);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+/* Iconos de tecnologías */
+.project-tech-stack {
+    margin-top: auto;
+    display: flex;
+    gap: 15px;
+    font-size: 1.5em;
+    color: var(--secondary-color);
+}
+
+/* --- Estilos del Modal de Video --- */
+
+.video-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* Fondo oscuro transparente */
+    z-index: 2000; /* Por encima de todo, incluso el header */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+.video-modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 900px; /* Ancho máximo del video grande */
+    background-color: #000;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    animation: scaleUp 0.3s ease;
+}
+
+/* Relación de aspecto 16:9 para que el video sea responsive */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-modal-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2em;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.video-modal-close:hover {
+    transform: scale(1.1);
+    color: var(--primary-color);
+}
+
+/* Animaciones simples */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+    from { transform: scale(0.9); }
+    to { transform: scale(1); }
+}
+
+/* Ajuste para móvil: botón de cerrar dentro si no hay espacio arriba */
+@media (max-width: 600px) {
+    .video-modal-close {
+        top: 5px;
+        right: 5px;
+        z-index: 10;
+        background-color: rgba(0,0,0,0.5);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
+/*-------------------MEDIA QUERYS-------------------------------------------------------------*/
+
+/* Responsividad básica */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 15px 20px;
+    }
+
+    header h1 {
+        margin-bottom: 15px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+
+    section {
+        padding: 60px 20px;
+    }
+
+    section h1 { /* Este puede eliminarse o ajustarse si no hay h1 generales en otras secciones */
+        font-size: 2.5em;
+    }
+
+    section h2 {
+        font-size: 2em;
+    }
+
+    section p {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    nav a {
+        font-size: 1em;
+    }
+
+    section h1 { /* Este puede eliminarse o ajustarse si no hay h1 generales en otras secciones */
+        font-size: 2em;
+    }
+
+    section h2 {
+        font-size: 1.8em;
+    }
+}
+
+
+
+/* 1. MEDIA QUERY PARA DESKTOP GRANDE (>= 1051px) */
+/* Aquí el menú tradicional es visible y el icono de hamburguesa está oculto */
+@media (min-width: 1051px) {
+    nav ul {
+        display: flex; /* Asegura que el menú normal esté visible */
+    }
+
+    .menu-icon {
+        display: none; /* Asegura que el icono esté oculto */
+    }
+
+    /* ... (tus estilos existentes para desktop grande) ... */
+    .hero-section-content {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 0 100px;
+        gap: 80px;
+    }
+
+    .hero-text-container {
+        text-align: left;
+        flex: 2;
+    }
+
+    .hero-greeting {
+        font-size: 2em;
+        justify-content: flex-start;
+    }
+
+    .hero-name {
+        font-size: 4em;
+    }
+
+    .hero-title {
+        font-size: 4em;
+    }
+
+    .hero-description {
+        font-size: 1.2em;
+        margin-top: 15px;
+    }
+
+    .hero-image-wrapper {
+        width: 350px;
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+
+    /*------------Sobre mi--------------------*/
+    .about-personal-info {
+        font-size: 1.6em;
+        margin-bottom: 25px;
+        margin-top: -15px;
+    }
+
+    section p {
+        font-size: 1.1em;
+    }
+
+    .timeline {
+        padding: 0;
+        margin-top: 80px;
+    }
+
+    .timeline::before {
+        left: 50%;
+        transform: translateX(-2px);
+    }
+
+    .timeline-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 60px;
+        padding-left: 0;
+    }
+
+    .timeline-item:nth-child(odd) {
+        flex-direction: row-reverse;
+    }
+
+    .timeline-item:nth-child(even) {
+        flex-direction: row;
+    }
+
+    .timeline-dot {
+        left: 50%;
+        transform: translateX(-50%);
+        top: 25px;
+    }
+
+    .timeline-content {
+        width: 45%;
+        box-sizing: border-box;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content {
+        margin-right: 50px;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+        margin-left: 50px;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 2. MEDIA QUERY PARA TABLET Y MÓVIL (<= 1050px) */
+/* **Aquí es donde el menú hamburguesa se activa** */
+@media (max-width: 1050px) {
+    /* Oculta la lista de navegación y muestra el icono de hamburguesa */
+    nav ul {
+        display: none; /* Oculta el menú normal */
+        flex-direction: column; /* Apila los enlaces en columna */
+        background-color: var(--header-footer-bg); /* Fondo del menú desplegable */
+        position: absolute;
+        top: 100%; /* Posiciona el menú debajo del nav (que ahora es el flex container) */
+        left: 0;
+        width: 100%;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        padding: 20px 0;
+        border-top: 1px solid var(--border-color);
+        animation: slideDown 0.3s ease-out forwards; /* Animación de despliegue */
+        transform-origin: top;
+        z-index: 999;
+    }
+
+    /* Muestra el menú cuando tiene la clase 'open' */
+    nav ul.open {
+        display: flex;
+    }
+
+    /* Muestra el icono de hamburguesa */
+    .menu-icon {
+        display: block;
+    }
+
+    /* Ajustes para los ítems del menú desplegable */
+    nav ul li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    nav ul li a {
+        font-size: 1.2em;
+        padding: 10px 0;
+        display: block;
+        color: var(--text-color);
+    }
+
+    nav ul li a::after {
+        display: none;
+    }
+    nav ul li a:hover,
+    nav ul li a.active {
+        background-color: var(--hover-color);
+        border-radius: 4px;
+        transform: none;
+        color: var(--highlight-color);
+    } 
+
+    /* Estilos para pantallas <= 1050px (anteriormente 768px a 1050px) */
+    .hero-section-content {
+        flex-direction: row; /* Mantenemos en fila si el ancho lo permite */
+        justify-content: center;
+        align-items: center;
+        padding: 0 40px;
+        gap: 40px;
+    }
+
+    .hero-text-container {
+        text-align: left;
+        flex: 1.5;
+        min-width: unset;
+    }
+
+    .hero-greeting {
+        font-size: 1.5em;
+        justify-content: flex-start;
+        margin-bottom: 5px;
+    }
+
+    .hero-name {
+        font-size: 2.8em;
+        margin-bottom: 5px;
+    }
+
+    .hero-title {
+        font-size: 2.8em;
+        margin-bottom: 15px;
+    }
+
+    .hero-description {
+        font-size: 1em;
+        margin-top: 10px;
+        margin-bottom: 15px;
+        max-width: 100%;
+    }
+
+    .hero-image-wrapper {
+        width: 260px;
+        height: 260px;
+        transform: rotate(3deg);
+    }
+
+    /*------------Sobre mi--------------------*/
+    .about-personal-info {
+        font-size: 1.3em;
+        margin-bottom: 20px;
+        margin-top: -10px;
+    }
+
+    section p {
+        font-size: 0.95em;
+    }
+
+    section h2 {
+        font-size: 2.2em;
+        margin-bottom: 30px;
+    }
+
+    /* IMPORTANTE: En tablet/móvil, la línea de tiempo se convierte en una sola columna */
+    .timeline {
+        padding: 0 10px; /* Ajusta este padding si es necesario */
+        margin-top: 60px;
+        max-width: 100%; /* Permite que ocupe todo el ancho disponible */
+    }
+
+    /* La línea vertical siempre a la izquierda en modo móvil/tablet */
+    .timeline::before {
+        left: 20px; /* Mantiene la línea a la izquierda */
+        transform: translateX(0); /* Resetea la transformación */
+    }
+
+    .timeline-item {
+        display: block; /* Vuelve a ser un bloque normal */
+        padding-left: 60px; /* Asegura el espacio para el punto y la línea */
+        margin-bottom: 50px;
+        /* Elimina las flex-directions y margins de desktop */
+        flex-direction: column; /* Asegura que el contenido se apile verticalmente */
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    /* Resetea los estilos específicos de nth-child(odd/even) que son para diseño a dos columnas */
+    .timeline-item:nth-child(odd) {
+        flex-direction: column; /* Vuelve a ser columna */
+    }
+
+    .timeline-item:nth-child(even) {
+        flex-direction: column; /* Vuelve a ser columna */
+    }
+
+    .timeline-dot {
+        left: 11px; /* Posición el punto en relación con el padding-left del item */
+        transform: translateX(0); /* Resetea la transformación de centrado */
+        top: 5px; /* Asegura que esté al inicio del contenido */
+    }
+
+    .timeline-content {
+        width: 100%; /* Ocupa el 100% del ancho disponible dentro del padding */
+        margin-left: 0; /* Elimina márgenes específicos de diseño a dos columnas */
+        margin-right: 0; /* Elimina márgenes específicos de diseño a dos columnas */
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content,
+    .timeline-item:nth-child(even) .timeline-content {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 3. MEDIA QUERY PARA MÓVIL PEQUEÑO (<= 767px) */
+/* Estos estilos anulan los de la media query anterior si hay conflicto, pero se basan en ellos */
+@media (max-width: 767px) {
+    /* El menú hamburguesa ya está activo desde 1050px hacia abajo,
+       aquí solo ajustamos los estilos específicos para pantallas aún más pequeñas */
+
+    .hero-section-content {
+        flex-direction: column; /* De nuevo en columna para móviles */
+        gap: 20px;
+        padding: 0 20px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero-text-container {
+        flex: none;
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-greeting {
+        font-size: 1.2em;
+        justify-content: center;
+        margin-bottom: 5px;
+    }
+    .hero-name {
+        font-size: 2.2em;
+        margin-bottom: 5px;
+    }
+    .hero-title {
+        font-size: 2.2em;
+        margin-bottom: 15px;
+    }
+    .hero-description {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+    }
+    .hero-image-wrapper {
+        width: 250px;
+        height: 250px;
+        margin-top: 0;
+        margin-bottom: 0;
+        transform: rotate(5deg);
+    }
+
+    /*------------Sobre mi--------------------*/
+    .about-personal-info {
+        font-size: 1em;
+        margin-bottom: 15px;
+        text-transform: none;
+        margin-top: -5px;
+    }
+
+    section p {
+        font-size: 0.9em;
+    }
+
+    section h2 {
+        font-size: 1.8em;
+        margin-bottom: 25px;
+    }
+
+    /* Ajustes para la línea de tiempo en móviles */
+    .timeline {
+        padding: 0 10px;
+        margin-top: 40px;
+        max-width: 100%;
+    }
+
+    .timeline::before {
+        left: 20px;
+    }
+
+    .timeline-item {
+        padding-left: 50px;
+        margin-bottom: 30px;
+    }
+
+    .timeline-dot {
+        left: 11px;
+        top: 5px;
+    }
+
+    .timeline-content {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 20px;
+    }
+
+    .job-title {
+        font-size: 1.3em;
+    }
+
+    .job-subtitle {
+        font-size: 1em;
+    }
+
+    .job-date {
+        font-size: 0.85em;
+    }
+
+    .job-description li {
+        font-size: 0.9em;
+    }
+
+    /* Habilidades en móvil */
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Keyframes para la animación de fade-in y slide-up */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Animación de deslizamiento hacia abajo para el menú hamburguesa */
+@keyframes slideDown {
+    from {
+        transform: scaleY(0);
+        opacity: 0;
+    }
+    to {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+}
