@@ -329,7 +329,7 @@ import { PiCertificate } from "react-icons/pi"; // Importar el icono de certific
                     <a href="#" className="project-btn">
                       <FaExternalLinkAlt /> Estás aquí
                     </a>
-                    <a href="https://github.com/TomasSpirito" target="_blank" rel="noopener noreferrer" className="project-btn outline">
+                    <a href="https://github.com/TomasSpirito/my-portfolio" target="_blank" rel="noopener noreferrer" className="project-btn outline">
                       <FaGithub /> Código
                     </a>
                   </div>
