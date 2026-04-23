@@ -21,6 +21,9 @@ import logoCac from './assets/cac.jpg';
 import logoSecundario from './assets/RF.png';
 import logoVivatia from './assets/vivatia_logo.jpeg';
 import logoNgaus from './assets/NGAUS.jpg';
+import imgTresGallegos from './assets/tresgallegos.png';
+import imgMySportdate from './assets/mysportdate.png';
+import imgPortfolio from './assets/portfolio.png';
 
   function App() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -282,7 +285,7 @@ import logoNgaus from './assets/NGAUS.jpg';
               <div className="project-card">
                 <div className="project-image-container">
                   {/* Imagen del Proyecto ( Placeholder hasta tener video) */}
-                  <img src="/src/assets/tresgallegos.png" alt="Plataforma Tres Gallegos" className="project-image" />
+                  <img src={imgTresGallegos} alt="Plataforma Tres Gallegos" className="project-image" />
                   
                   <div className="project-overlay">
                     <a href="https://tresgallegos.vercel.app/" target="_blank" rel="noopener noreferrer" className="project-btn">
@@ -309,7 +312,7 @@ import logoNgaus from './assets/NGAUS.jpg';
               <div className="project-card">
                 <div className="project-image-container">
                   {/* Imagen del Proyecto ( Placeholder hasta tener video) */}
-                  <img src="/src/assets/mysportdate.png" alt="Plataforma MySportdate" className="project-image" />
+                  <img src={imgMySportdate} alt="Plataforma MySportdate" className="project-image" />
                   
                   <div className="project-overlay">
                     <a href="https://mysportdate.vercel.app/" target="_blank" rel="noopener noreferrer" className="project-btn">
@@ -385,7 +388,7 @@ import logoNgaus from './assets/NGAUS.jpg';
               {/* PROYECTO 4: Portfolio Personal */}
               <div className="project-card">
                 <div className="project-image-container">
-                  <img src="/src/assets/portfolio.png" alt="Portfolio Personal" className="project-image" />
+                  <img src={imgPortfolio} alt="Plataforma MySportdate" className="project-image" />
                   <div className="project-overlay">
                     <a href="#" className="project-btn">
                       <FaExternalLinkAlt /> Estás aquí
