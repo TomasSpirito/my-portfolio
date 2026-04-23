@@ -879,19 +879,34 @@ header nav {
 .project-image-container {
     position: relative;
     width: 100%;
-    height: 220px; /* Altura fija para uniformidad */
+    aspect-ratio: 16 / 9; /* NUEVO: Obliga al contenedor a ser siempre 16:9 */
+    /* height: 220px;  <-- ELIMINAMOS ESTO */
     overflow: hidden;
-    background-color: #000; /* Fondo negro por si el video no carga rápido */
+    background-color: #000; /* Fondo negro por si la imagen tarda en cargar */
 }
 
-/* Estilo para el video (iframe) */
+/* NUEVO: Estilos específicos para la imagen estática */
+.project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Como contenedor e imagen son 16:9, encajará 100% perfecto */
+    display: block;
+    transition: transform 0.4s ease; /* Transición suave para el zoom */
+}
+
+/* NUEVO: Efecto sutil de zoom en la imagen al hacer hover sobre la tarjeta */
+.project-card:hover .project-image {
+    transform: scale(1.05); 
+}
+
+/* Estilo para el video (iframe) - ESTE LO MANTIENES CASI IGUAL */
 .project-video {
     width: 100%;
     height: 100%;
     object-fit: cover; 
     display: block;
     border: none;
-    pointer-events: none; /* TRUCO: Evita que el usuario pause el video al hacer click, forzando a usar el overlay */
+    pointer-events: none;
 }
 
 /* Capa oscura con botones */

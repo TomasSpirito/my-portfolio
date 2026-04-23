@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'; // Importar useState
 import './App.css'
-import { FaJs, FaJava, FaPython, FaNodeJs, FaReact, FaHtml5, FaCss3Alt, FaGithub, FaAws, FaGoogle, FaLinkedin, FaEnvelope, FaExternalLinkAlt } from 'react-icons/fa';
-import { SiSpringboot, SiMysql, SiMongodb, SiPostman, SiTrello, SiFigma } from 'react-icons/si';
+import { FaJs, FaJava, FaPython, FaNodeJs, FaReact, FaHtml5, FaCss3Alt, FaGithub, FaAws, FaGoogle, FaLinkedin, FaEnvelope, FaExternalLinkAlt, FaCreditCard } from 'react-icons/fa'; // Agregado FaCreditCard
+import { SiSpringboot, SiMysql, SiMongodb, SiPostman, SiTrello, SiFigma, SiSupabase, SiPostgresql, SiTailwindcss, SiTypescript } from 'react-icons/si'; // Agregados Supabase, Postgresql, Tailwind, Typescript
 import { DiVisualstudio } from "react-icons/di"; // CORRECTO: Para Visual Studio Code
 import { TbApi } from "react-icons/tb";
 import { IoGitBranchOutline, IoClose } from "react-icons/io5"; // Agregamos IoClose
@@ -272,16 +272,71 @@ import logoNgaus from './assets/NGAUS.jpg';
           </div>
         </section> {/* FIN de la NUEVA SECCIÓN: Habilidades y Tecnologías */}
 
-        {/* NUEVA SECCIÓN: Proyectos Destacados */}
+        {/* SECCIÓN: Proyectos Destacados - ACTUALIZADA */}
         <section id="proyectos" className="projects-section">
           <div className="section-content">
             <h2 className="skills-title">Proyectos Destacados</h2>
             <div className="projects-grid">
 
-              {/* PROYECTO 1: Cookify */}
+              {/* PROYECTO 1: Tres Gallegos (E-commerce SaaS) */}
               <div className="project-card">
                 <div className="project-image-container">
-                  {/* IFRAME DE YOUTUBE CON TU VIDEO */}
+                  {/* Imagen del Proyecto ( Placeholder hasta tener video) */}
+                  <img src="/src/assets/tresgallegos.png" alt="Plataforma Tres Gallegos" className="project-image" />
+                  
+                  <div className="project-overlay">
+                    <a href="https://tresgallegos.vercel.app/" target="_blank" rel="noopener noreferrer" className="project-btn">
+                      <FaExternalLinkAlt /> Ver Demo En Vivo
+                    </a>
+                  </div>
+                </div>
+                
+                <div className="project-info">
+                  <h3>Tres Gallegos - SaaS Logístico</h3>
+                  <p>
+                    Plataforma integral (B2B/B2C) para la gestión y venta de viandas escolares. 
+                    Maneja múltiples roles, lógica compleja de calendarios de pedidos inteligentes, gestión de alergias alimentarias, alertas de producción para cocina y módulos de facturación administrativa automatizada con estadísticas.
+                  </p>
+                  <div className="project-tech-stack">
+                    <span title="React & TypeScript"><SiTypescript /></span>
+                    <span title="Supabase (PostgreSQL)"><SiSupabase /></span>
+                    <span title="Tailwind CSS"><SiTailwindcss /></span>
+                  </div>
+                </div>
+              </div>
+
+              {/* PROYECTO 2: MySportdate (Gestión de Turnos Realtime) */}
+              <div className="project-card">
+                <div className="project-image-container">
+                  {/* Imagen del Proyecto ( Placeholder hasta tener video) */}
+                  <img src="/src/assets/mysportdate.png" alt="Plataforma MySportdate" className="project-image" />
+                  
+                  <div className="project-overlay">
+                    <a href="https://mysportdate.vercel.app/" target="_blank" rel="noopener noreferrer" className="project-btn">
+                      <FaExternalLinkAlt /> Ver Demo En Vivo
+                    </a>
+                  </div>
+                </div>
+                
+                <div className="project-info">
+                  <h3>MySportdate - Booking Engine</h3>
+                  <p>
+                    Sistema de gestión y reserva de turnos deportivos con arquitectura Serverless y Realtime. 
+                    Incluye un portal público de reservas, panel administrativo con grilla interactiva, lógica de "canchas vinculadas", notificaciones in-app instantáneas basadas en Triggers de SQL y pasarela de pagos integrada con Mercado Pago.
+                  </p>
+                  <div className="project-tech-stack">
+                    <span title="React & TypeScript"><FaReact /></span>
+                    <span title="Supabase (BaaS & Realtime)"><SiSupabase /></span>
+                    <span title="Mercado Pago"><FaCreditCard /></span>
+                    <span title="Edge Functions (Deno)"><SiTypescript /></span>
+                  </div>
+                </div>
+              </div>
+
+              {/* PROYECTO 3: Cookify */}
+              <div className="project-card">
+                <div className="project-image-container">
+                  {/* IFRAME DE YOUTUBE */}
                   <iframe 
                     className="project-video"
                     src="https://www.youtube.com/embed/ayX14vkiY1g?autoplay=1&mute=1&loop=1&color=white&controls=0&modestbranding=1&playsinline=1&rel=0&enablejsapi=1&playlist=ayX14vkiY1g"
@@ -292,7 +347,6 @@ import logoNgaus from './assets/NGAUS.jpg';
                   ></iframe>
                   
                   <div className="project-overlay">
-                    {/* MODIFICADO: Ahora es un botón que abre el modal interno */}
                     <button 
                         onClick={() => openVideoModal("ayX14vkiY1g")} 
                         className="project-btn"
@@ -301,7 +355,6 @@ import logoNgaus from './assets/NGAUS.jpg';
                       <FaExternalLinkAlt /> Ver Demo Completa
                     </button>
                     
-                    {/* Botones de Repositorios (se mantienen igual) */}
                     <div className="project-links-row">
                         <a href="https://github.com/delfinapiendii/Cookify-Front" target="_blank" rel="noopener noreferrer" className="project-btn outline small">
                         <FaGithub /> Front
@@ -316,24 +369,23 @@ import logoNgaus from './assets/NGAUS.jpg';
                 <div className="project-info">
                   <h3>Cookify - App de Recetas</h3>
                   <p>
-                    Aplicación móvil para descubrir y compartir recetas. Desarrollada como Proyecto Final universitario (UADE). 
-                    Cuenta con modo invitado, filtros, creación de recetas y gestión de perfil.
+                    Aplicación móvil para descubrir y compartir recetas culinarias. Desarrollada como Proyecto Final universitario (UADE). 
+                    Cuenta con modo invitado, filtros avanzados, creación de recetas y gestión de perfil.
                     Diseñada en Figma y gestionada con Trello.
                   </p>
                   <div className="project-tech-stack">
-                    <span title="React Native"><FaReact /></span>
+                    <span title="React Native & Expo"><FaReact /></span>
                     <span title="Node.js"><FaNodeJs /></span>
                     <span title="MySQL"><SiMysql /></span>
                     <span title="Figma"><SiFigma /></span>
-                    <span title="Trello"><SiTrello /></span>
                   </div>
                 </div>
               </div>
 
-              {/* PROYECTO 2: Portfolio Personal */}
+              {/* PROYECTO 4: Portfolio Personal */}
               <div className="project-card">
                 <div className="project-image-container">
-                  <img src={fotoPerfil} alt="Portfolio Personal" className="project-image" />
+                  <img src="/src/assets/portfolio.png" alt="Portfolio Personal" className="project-image" />
                   <div className="project-overlay">
                     <a href="#" className="project-btn">
                       <FaExternalLinkAlt /> Estás aquí
